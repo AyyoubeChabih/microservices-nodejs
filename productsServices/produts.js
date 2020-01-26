@@ -42,6 +42,25 @@ app.post("/product", (req, res) => {
     res.send("New product created with success!");
 });
 
+app.get("/products", (req, res) => {
+    Product.find()
+        .then(products => res.json(products))
+        .catch(err => {
+            if (err) throw err;
+        });
+});
+
+app.get("/product/:id", (req, res) => {
+    Product.findById(req.params.id)
+        .then(product => {
+            if (product) res.json(product);
+            else res.sendStatus(404);
+        })
+        .catch(err => {
+            if (err) throw err;
+        });
+});
+
 app.listen(4545, () => {
     console.log("Server running ... - Products Services");
 });

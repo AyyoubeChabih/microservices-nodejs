@@ -1,3 +1,3 @@
 # microservices-nodejs
 
-# # three services : books, costumers, orders
+# # three services : products, costumers, orders
