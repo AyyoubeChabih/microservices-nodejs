@@ -61,6 +61,14 @@ app.get("/product/:id", (req, res) => {
         });
 });
 
+app.delete("/product/:id", (req, res) => {
+    Product.findOneAndRemove(req.params.id)
+        .then(() => res.send("Product removed with success"))
+        .catch(err => {
+            if (err) throw err;
+        });
+});
+
 app.listen(4545, () => {
     console.log("Server running ... - Products Services");
 });
